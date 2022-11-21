@@ -1,0 +1,112 @@
+syntax = "proto3";
+
+package Copia_de_original_de_authorization_server_dev;
+
+option go_package = "github.com/SalviCF/authorization-server/proto";
+
+message Item {
+    enum ItemPriority {
+        LOW = 0;
+        MID = 50;
+        HIGH = 100;
+    }
+
+    enum ItemStatus {
+        INACTIVE = 0;
+        ACTIVE = 1;
+    }
+
+    
+}
+
+message Kahos {
+    enum KahoStatus {
+        INACTIVE = 0;
+        ACTIVE = 1;
+    }
+
+    
+}
+
+message ReadPoliciesTenantReq {
+    Kahos kahos = 1;
+}
+
+message ReadPoliciesTenantResp {
+    string kahosId = 1;
+}
+
+message CreatePolicyTenantReq {
+    Item item = 1;
+}
+
+message CreatePolicyTenantResp {
+    string itemId = 1;
+}
+
+message DeletePolicyTenantReq {
+    Item item = 1;
+}
+
+message DeletePolicyTenantResp {
+    repeated Item items = 1;
+}
+
+message UpdatePolicyTenantReq {
+    Item item = 1;
+}
+
+message UpdatePolicyTenantResp {
+   repeated Item items = 1;
+}
+
+message ReadRolesTenantReq {
+    Item item = 1;
+}
+
+message ReadRolesTenantResp {
+   repeated Item items = 1;
+}
+
+message CreateRoleTenantReq {
+    Item item = 1;
+}
+
+message CreateRoleTenantResp {
+   repeated Item items = 1;
+}
+
+message DeleteRoleTenantReq {
+    Item item = 1;
+}
+
+message DeleteRoleTenantResp {
+   repeated Item items = 1;
+}
+
+message UpdateRoleTenantReq {
+    Item item = 1;
+}
+
+message UpdateRoleTenantResp {
+   repeated Item items = 1;
+}
+
+message CheckPermissionUserResourceTenantReq {
+    Item item = 1;
+}
+
+message CheckPermissionUserResourceTenantResp {
+   repeated Item items = 1;
+}
+
+service KahosService {
+    rpc Read(ReadPoliciesTenantReq) returns (ReadPoliciesTenantResp);
+    rpc Create(CreatePolicyTenantReq) returns (CreatePolicyTenantResp);
+    rpc Delete(DeletePolicyTenantReq) returns (DeletePolicyTenantResp);
+    rpc Update(UpdatePolicyTenantReq) returns (UpdatePolicyTenantResp);
+    rpc ReadRoles(ReadRolesTenantReq) returns (ReadRolesTenantResp);
+    rpc CreateRole(CreateRoleTenantReq) returns (CreateRoleTenantResp);
+    rpc DeleteRole(DeleteRoleTenantReq) returns (DeleteRoleTenantResp);
+    rpc UpdateRole(UpdateRoleTenantReq) returns (UpdateRoleTenantResp);
+}
